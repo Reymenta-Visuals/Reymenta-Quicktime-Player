@@ -74,7 +74,8 @@ void QuickTimePlayer::loadMovieFile( const fs::path &moviePath )
 	try {
 		// load up the movie, set it to loop, and begin playing
 		mMovie = qtime::MovieGl::create( moviePath );
-		mMovie->setLoop();
+		
+		mMovie->setLoop(mMovie->getDuration()<30.0f) ;
 		mMovie->play();
 		
 		// create a texture for showing some info about the movie
